@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Windows;
@@ -18,9 +18,9 @@ namespace SvgoAutoExe4
         private const string DEFAULT_SAVE_FILENAME = "\\Output.svg";
         private const string SVGO_EXE_PATH_CURRENT = "svgo\\svgo.exe";
 
-        private readonly Svgo svgo = new Svgo();
+        private readonly Svgo svgo;
         private readonly FileSystemWatcher fileWatcher = new FileSystemWatcher();
-        private readonly Window sizeWindow;
+        private readonly SizeWindow sizeWindow;
 
         /// <summary>
         /// メインウインドウ
@@ -30,6 +30,7 @@ namespace SvgoAutoExe4
             InitializeComponent();
             ButtonStop.IsEnabled = false;
             sizeWindow = new SizeWindow();
+            svgo = new Svgo(sizeWindow);
         }
 
         /// <summary>
@@ -117,7 +118,13 @@ namespace SvgoAutoExe4
         private void PrecisionSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Slider slider = (Slider)sender;
+
+            // svgo = new Svgo(sizeWindow) をするために静的インスタンスに出来ないのでインスタンス化するまでは触らない
+            if (svgo != null)
+            {
             svgo.Precision = (Int32)slider.Value;
+        }
+
         }
 
         /// <summary>

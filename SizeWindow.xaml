@@ -6,5 +6,5 @@
         xmlns:local="clr-namespace:SvgoAutoExe4"
         mc:Ignorable="d"
         Title="SvgoAutoExe SizeWindow" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" IsTabStop="False" MouseLeftButtonDown="SizeWindowMove" d:DesignHeight="30" d:DesignWidth="134" Height="30" Width="150" WindowStyle="None" Background="White" BorderThickness="1">
-    <TextBlock HorizontalAlignment="Left" Text="FileSize: 0Byte" VerticalAlignment="Center" Padding="10,0,0,0"/>
+    <TextBlock x:Name="TextBlockFileSize" HorizontalAlignment="Left" Text="FileSize: 0Byte" VerticalAlignment="Center" Padding="10,0,0,0"/>
 </Window>

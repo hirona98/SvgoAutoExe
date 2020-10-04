@@ -25,6 +25,15 @@ namespace SvgoAutoExe4
         }
 
         /// <summary>
+        /// テキストをセットする
+        /// </summary>
+        /// <param name="text"></param>
+        public void SetText(string text)
+        {
+            TextBlockFileSize.Text = text;
+        }
+
+        /// <summary>
         /// ファイル容量ウインドウのドラッグ
         /// </summary>
         /// <param name="sender"></param>
@@ -33,5 +42,6 @@ namespace SvgoAutoExe4
         {
             DragMove();
         }
+
     }
 }

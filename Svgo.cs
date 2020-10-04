@@ -18,6 +18,12 @@ namespace SvgoAutoExe4
         public string TarGetTargetFilePath { get; set; }
 
         private DateTime lastExecTime = new DateTime();
+        SizeWindow sizeWindow;
+
+        public Svgo(SizeWindow sWindow)
+        {
+            sizeWindow = sWindow;
+        }
 
         /// <summary>
         /// SVGOに渡す引数を作成
@@ -62,7 +68,15 @@ namespace SvgoAutoExe4
             p.WaitForExit();
             p.Dispose();
 
+            updateSizeWindow();
+
             lastExecTime = DateTime.Now;
+        }
+
+        private void updateSizeWindow()
+        {
+            FileInfo svgFileInfo = new FileInfo(OutputFilePath);
+            sizeWindow.SetText(String.Format("FileSize: {0:#,0}Byte", svgFileInfo.Length));
         }
 
         /// <summary>
