@@ -1,4 +1,4 @@
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Windows;
@@ -44,6 +44,8 @@ namespace SvgoAutoExe4
             TextBoxDstFile.IsEnabled = false;
             ButtonStart.IsEnabled = false;
             ChkRemoveXMLNS.IsEnabled = false;
+            SliderPrecision.IsEnabled = false;
+
             ButtonStop.IsEnabled = true;
         }
 
@@ -58,6 +60,8 @@ namespace SvgoAutoExe4
             TextBoxDstFile.IsEnabled = true;
             ButtonStart.IsEnabled = true;
             ChkRemoveXMLNS.IsEnabled = true;
+            SliderPrecision.IsEnabled = true;
+
             ButtonStop.IsEnabled = false;
         }
 
@@ -122,9 +126,8 @@ namespace SvgoAutoExe4
             // svgo = new Svgo(sizeWindow) をするために静的インスタンスに出来ないのでインスタンス化するまでは触らない
             if (svgo != null)
             {
-            svgo.Precision = (Int32)slider.Value;
-        }
-
+                svgo.Precision = (Int32)slider.Value;
+            }
         }
 
         /// <summary>
@@ -169,11 +172,13 @@ namespace SvgoAutoExe4
             if (File.Exists(TextBoxSrcFile.Text) == false)
             {
                 MessageBox.Show("対象ファイルがありません");
+                UiEnabled();
                 return false;
             }
             if (Directory.Exists(Directory.GetParent(TextBoxDstFile.Text).ToString()) == false)
             {
                 MessageBox.Show("出力フォルダがありません");
+                UiEnabled();
                 return false;
             }
 

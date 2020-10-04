@@ -58,7 +58,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="Precision: "/>
-            <Slider ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,15" Width="227" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft"/>
+            <Slider x:Name="SliderPrecision" ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,15" Width="227" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft"/>
         </Grid>
         <!-- 設定 チェックボックス系 -->
         <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
