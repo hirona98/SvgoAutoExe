@@ -8,6 +8,7 @@ using System.Windows;
 
 namespace SvgoAutoExe4
 {
+
     /// <summary>
     /// App.xaml の相互作用ロジック
     /// </summary>

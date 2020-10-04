@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SvgoAutoExe4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+
+        Title="SvgAutoExe4" Height="300" Width="600">
 
     <Grid>
         <!-- グリッド全体を定義 -->
@@ -60,7 +61,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="Precision: "/>
-            <Slider ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,15" Width="250" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft"/>
+            <Slider ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,15" Width="227" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft"/>
         </Grid>
         <!-- 設定 チェックボックス系 -->
         <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
@@ -77,7 +78,19 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Button x:Name="ButtonStart" Content="監視開始" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20,10,20" Width="70" Click="ButtonStart_Click"/>
-            <Button x:Name="ButtonStop" Content="停止" Grid.Row="0" Grid.Column="1" Padding="10,5" Width="70" Click="ButtonStop_Click" VerticalContentAlignment="Bottom" Margin="10,20,20,20"/>
+            <Button x:Name="ButtonStop" Content="停止" Grid.Row="0" Grid.Column="1" Padding="10,5" Width="70" Click="ButtonStop_Click" Margin="10,20,20,20"/>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="332">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ToggleButton x:Name="ButtonPreview" Content="プレビューウィンドウ" Grid.Row="0" Grid.Column="1" Padding="10,5"  Margin="10,20,20,20" />
+            <ToggleButton x:Name="ButtonShowSizeWindow" Content="サイズ表示ウィンドウ" Grid.Row="0" Grid.Column="0" Padding="10,5"  Margin="20,20,10,20" Checked="VisibleSizeWindow" Unchecked="UnVisibleSizeWindow"/>
         </Grid>
     </Grid>
+
 </Window>

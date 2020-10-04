@@ -20,6 +20,7 @@ namespace SvgoAutoExe4
 
         private readonly Svgo svgo = new Svgo();
         private readonly FileSystemWatcher fileWatcher = new FileSystemWatcher();
+        private readonly Window sizeWindow;
 
         /// <summary>
         /// メインウインドウ
@@ -28,6 +29,7 @@ namespace SvgoAutoExe4
         {
             InitializeComponent();
             ButtonStop.IsEnabled = false;
+            sizeWindow = new SizeWindow();
         }
 
         /// <summary>
@@ -208,6 +210,16 @@ namespace SvgoAutoExe4
         {
             ((DispatcherFrame)obj).Continue = false;
             return null;
+        }
+
+        private void VisibleSizeWindow(object sender, RoutedEventArgs e)
+        {
+            sizeWindow.Show();
+        }
+
+        private void UnVisibleSizeWindow(object sender, RoutedEventArgs e)
+        {
+            sizeWindow.Hide();
         }
     }
 }
