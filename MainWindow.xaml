@@ -6,7 +6,78 @@
         xmlns:local="clr-namespace:SvgoAutoExe4"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        
+        <!-- グリッド全体を定義 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- 対象ファイル -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="対象ファイル: "/>
+            <TextBox x:Name="TextBoxSrcFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0"/>
+            <Button x:Name="ButtonSrcDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonSrcOpenDialog_Click" Width="70"/>
+        </Grid>
+
+        <!-- 出力ファイル -->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="出力ファイル: "/>
+            <TextBox x:Name="TextBoxDstFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0"/>
+            <Button x:Name="ButtonDstDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonDstOpenDialog_Click" Width="70"/>
+        </Grid>
+
+        <!-- 設定 Precision -->
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="Precision: "/>
+            <Slider ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,15" Width="250" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft"/>
+        </Grid>
+        <!-- 設定 チェックボックス系 -->
+        <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
+            <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" Margin="20,5" VerticalAlignment="Center" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。"/>
+        </Grid>
+
+        <!-- 監視開始/停止-->
+        <Grid Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="ButtonStart" Content="監視開始" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20,10,20" Width="70" Click="ButtonStart_Click"/>
+            <Button x:Name="ButtonStop" Content="停止" Grid.Row="0" Grid.Column="1" Padding="10,5" Width="70" Click="ButtonStop_Click" VerticalContentAlignment="Bottom" Margin="10,20,20,20"/>
+        </Grid>
     </Grid>
 </Window>
