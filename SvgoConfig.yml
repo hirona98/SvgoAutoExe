@@ -1,0 +1,128 @@
+﻿multipass: true
+
+plugins:
+  # - name
+  #
+  # or:
+  # - name: false
+  # - name: true
+  #
+  # or:
+  # - name:
+  #     param1: 1
+  #     param2: 2
+
+  - cleanupAttrs: true
+  - inlineStyles: true
+  - removeDoctype: true
+  - removeXMLProcInst: true
+  - removeComments: true
+  - removeMetadata: true
+  - removeTitle: true
+  - removeDesc: true
+  - removeUselessDefs: true
+  - removeXMLNS: false # Remove XMLNS # trueだとブラウザでのプレビュー表示ができない（ゲーム内のプレビューはOK）
+  - removeEditorsNSData: true
+  - removeEmptyAttrs: true
+  - removeHiddenElems: true
+  - removeEmptyText: true
+  - removeEmptyContainers: true
+  - removeViewBox: true
+  - cleanupEnableBackground: true
+  - minifyStyles: true
+  - convertStyleToAttrs:
+      keepImportant: false
+  - convertColors: true
+  - convertPathData: # Round/rewrite paths # パスデータを相対または絶対（どちらか短い方）に変換し、1つのセグメントを別のセグメントに変換し、不要な区切り文字を削除し、スマートな丸めなどを行う
+      applyTransforms: true
+      applyTransformsStroked: true
+      makeArcs:
+        threshold: 2.5 # default: 2.5 # 丸め誤差の係数
+        tolerance: 0.5 # default: 0.5 # 半径の割合
+      straightCurves: true
+      lineShorthands: true
+      curveSmoothShorthands: true
+      floatPrecision: 3 # default: 3 # UIの設定で上書きされるので注意
+      transformPrecision: 3 # default: 5
+      removeUseless: true
+      collapseRepeated: true
+      utilizeAbsolute: true
+      leadingZero: true
+      negativeExtraSpace: true
+      noSpaceAfterFlags: false # TODO: trueだとずれる。バグ？
+      forceAbsolutePath: false # 絶対パスの強制
+  - convertTransform: # Round/rewrite transforms # 複数の変換を1つに折りたたみ、行列を短いエイリアスに変換する
+      convertToShorts: true
+      floatPrecision: 3 # default: 3 # UIの設定で上書きされるので注意
+      transformPrecision: 3 # default: 5
+      matrixToTransform: true
+      shortTranslate: true
+      shortScale: true
+      shortRotate: true
+      removeUseless: true
+      collapseIntoOne: true
+      leadingZero: true
+      negativeExtraSpace: false
+  - removeUnknownsAndDefaults:
+      unknownContent: true
+      unknownAttrs: true
+      defaultAttrs: true
+      uselessOverrides: true
+      keepDataAttrs: true
+      keepAriaAttrs: true
+      keepRoleAttr: false
+  - removeNonInheritableGroupAttrs: true
+  - removeUselessStrokeAndFill:
+      stroke: true
+      fill: true
+      removeNone: false
+      hasStyleOrScript: false
+  - removeUnusedNS: true
+  - prefixIds: false # SVGOMGでは無効 # prefix IDs and classes with the SVG filename or an arbitrary string
+    # delim: "__"
+    # prefixIds: true
+    # prefixClassNames: true
+  - cleanupIDs: true
+  - cleanupNumericValues: # Round/rewrite numbers
+      floatPrecision: 3 # このプラグインは最低値1 # default: 3 # UIの設定で上書きされるので注意
+      leadingZero: true # default: true
+      defaultPx: true # default: true
+      convertToPx: true # default: true
+  - cleanupListOfValues: # Round/rewrite number lists # 数値のリストを取る属性の数値を丸める（viewBoxやenable-backgroundなど）
+      floatPrecision: 3 # UIの設定で上書きされるので注意
+      leadingZero: true
+      defaultPx: true
+      convertToPx: true
+  - moveElemsAttrsToGroup: true
+  - moveGroupAttrsToElems: true
+  - mergePaths:
+      collapseRepeated: true
+      force: false
+      leadingZero: true
+      negativeExtraSpace: true
+      noSpaceAfterFlags: false # TODO: trueだとずれる。バグ？
+  - convertShapeToPath:
+      convertArcs: true
+  - convertEllipseToCircle: true
+  - sortAttrs: true
+  - sortDefsChildren: true
+  - removeDimensions: true # Prefer viewBox to width/height # <svg width="100" height="50" /> ==> <svg viewBox="0 0 100 50" />
+  - removeAttrs: false # SVGOMGには無い
+  - removeAttributesBySelector: false # SVGOMGには無い
+  - removeElementsByAttr: false # SVGOMGには無い
+  - collapseGroups: true
+  - removeRasterImages: true
+  - addClassesToSVGElement: false # SVGOMGには無い
+  - addAttributesToSVGElement: false # SVGOMGには無い
+  - removeOffCanvasPaths: false # SVGOMGには無い # ビューボックスの外に描かれた要素を削除する
+  - removeStyleElement: true
+  - removeScriptElement: true
+  - reusePaths: false # default:false # 重複する要素を見つけてリンクに置き換える
+
+# configure the indent (default 4 spaces) used by `--pretty` here:
+#
+# @see https://github.com/svg/svgo/blob/master/lib/svgo/js2svg.js#L6 for more config options
+#
+# js2svg:
+#  pretty: true
+#  indent: '  '
