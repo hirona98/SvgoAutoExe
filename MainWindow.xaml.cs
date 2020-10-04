@@ -21,6 +21,7 @@ namespace SvgoAutoExe4
         private readonly Svgo svgo;
         private readonly FileSystemWatcher fileWatcher = new FileSystemWatcher();
         private readonly SizeWindow sizeWindow;
+        private readonly PreviewWindow previewWindow;
 
         /// <summary>
         /// メインウインドウ
@@ -30,7 +31,8 @@ namespace SvgoAutoExe4
             InitializeComponent();
             ButtonStop.IsEnabled = false;
             sizeWindow = new SizeWindow();
-            svgo = new Svgo(sizeWindow);
+            previewWindow = new PreviewWindow(this);
+            svgo = new Svgo(sizeWindow, previewWindow);
         }
 
         /// <summary>
@@ -224,14 +226,48 @@ namespace SvgoAutoExe4
             return null;
         }
 
+        /// <summary>
+        /// サイズ表示ウインドウを開く
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VisibleSizeWindow(object sender, RoutedEventArgs e)
         {
             sizeWindow.Show();
         }
 
+        /// <summary>
+        /// サイズ表示ウインドウを閉じる
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UnVisibleSizeWindow(object sender, RoutedEventArgs e)
         {
             sizeWindow.Hide();
+        }
+
+        /// <summary>
+        /// プレビューウインドウ表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VisiblePreviewWindow(object sender, RoutedEventArgs e)
+        {
+            if(String.IsNullOrEmpty(TextBoxSrcFile.Text) == true)
+            {
+                previewWindow.Browser.Source = new Uri("https://www.compileheart.com/neptune/10th/");
+            }
+            previewWindow.Show();
+        }
+
+        /// <summary>
+        /// プレビューウインドウを閉じる
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UnVisiblePreviewWindow(object sender, RoutedEventArgs e)
+        {
+            previewWindow.Hide();
         }
     }
 }

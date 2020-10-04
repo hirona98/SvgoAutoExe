@@ -19,10 +19,12 @@ namespace SvgoAutoExe4
 
         private DateTime lastExecTime = new DateTime();
         private readonly SizeWindow sizeWindow;
+        private readonly PreviewWindow previewWindow;
 
-        public Svgo(SizeWindow sWindow)
+        public Svgo(SizeWindow sWindow, PreviewWindow pWindow)
         {
             sizeWindow = sWindow;
+            previewWindow = pWindow;
         }
 
         /// <summary>

@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:SvgoAutoExe4" mc:Ignorable="d" Title="SvgAutoExe4" Height="300" Width="600">
+    xmlns:local="clr-namespace:SvgoAutoExe4" mc:Ignorable="d" Title="SvgAutoExe" Height="300" Width="600">
 
     <Grid>
         <!-- グリッド全体を定義 -->
@@ -85,7 +85,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ToggleButton x:Name="ButtonPreview" Content="プレビューウィンドウ" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10,20,20,20" />
+            <ToggleButton x:Name="ButtonPreview" Content="プレビューウィンドウ" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10,20,20,20" Checked="VisiblePreviewWindow" Unchecked="UnVisiblePreviewWindow" />
             <ToggleButton x:Name="ButtonShowSizeWindow" Content="サイズ表示ウィンドウ" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="20,20,10,20" Checked="VisibleSizeWindow" Unchecked="UnVisibleSizeWindow"/>
         </Grid>
     </Grid>
