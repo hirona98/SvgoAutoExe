@@ -1,12 +1,17 @@
 # SvgoAutoExe
 SVGの更新を監視して上書き保存時にSVGOを実行します
 
+# 使用方法
+回答したフォルダで SvgoAutoExe.exe を実行してください。
+
+----
+
 # 設定ファイルについて
 SvgoConfig.ymlを手で書き換えないでください。プログラム中で設定値を認識できなくなる可能性があります。
 （YAMLを読み込んでSVGOをAPI呼び出ししようと思っていたのですが、めんどくさそうだったのでファイルを書き換えて渡してます…）
 
 # SVGOについて
-本プログラムは、内部ではexe化したSVGOを動作させています。
+本プログラムは、SVGOをexe呼び出しで動作させています。
 
 ## exe化手順
 exe化にはnexeを使用するので予めグローバルインストールしておいてください。
@@ -26,10 +31,10 @@ SvgoAutoExe.exeと同じディレクトリにsvgoディレクトリを作成し�
 * pluginsディレクトリ
 
 # 環境
-VSCode
-.NET Core SDK 3.1.402
-WPFアプリケーション
-SVGO 1.3.2
+* Visual Studio 2019
+* .NET Framework 4.6
+* WPFアプリケーション
+* SVGO 1.3.2
 
 # メモ
 
