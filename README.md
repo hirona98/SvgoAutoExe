@@ -1,0 +1,1 @@
+# SvgoAutoExe4
