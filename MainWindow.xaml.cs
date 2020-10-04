@@ -253,10 +253,15 @@ namespace SvgoAutoExe4
         /// <param name="e"></param>
         private void VisiblePreviewWindow(object sender, RoutedEventArgs e)
         {
-            if(String.IsNullOrEmpty(TextBoxSrcFile.Text) == true)
+            if (File.Exists(TextBoxDstFile.Text) == true)
             {
-                previewWindow.Browser.Source = new Uri("https://www.compileheart.com/neptune/10th/");
+                previewWindow.Browser.Navigate(TextBoxDstFile.Text);
             }
+            else
+            {
+                previewWindow.Browser.Navigate("https://www.compileheart.com/");
+            }
+
             previewWindow.Show();
         }
 

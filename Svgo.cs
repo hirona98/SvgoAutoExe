@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace SvgoAutoExe4
 {
@@ -71,6 +72,7 @@ namespace SvgoAutoExe4
             p.Dispose();
 
             UpdateSizeWindow();
+            previewWindow.PreviewRefresh();
 
             lastExecTime = DateTime.Now;
         }

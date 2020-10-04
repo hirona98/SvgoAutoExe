@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace SvgoAutoExe4
 {
@@ -28,11 +16,44 @@ namespace SvgoAutoExe4
             InitializeComponent();
         }
 
+        public void PreviewRefresh()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                Browser.Navigate(mainWindow.TextBoxDstFile.Text);
+            });
+        }
+
+        /// <summary>
+        /// 閉じるボタン押下時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviewWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
+            e.Cancel = true; // インスタンスを残したままにしたいのでキャンセル
             Hide();
             mainWindow.ButtonPreview.IsChecked = false;
+        }
+
+        /// <summary>
+        /// 最前面に固定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonShowTopChecked(object sender, RoutedEventArgs e)
+        {
+            Topmost = true;
+        }
+
+        /// <summary>
+        /// 最前面の固定を解除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonShowTopUnChecked(object sender, RoutedEventArgs e)
+        {
+            Topmost = false;
         }
     }
 }

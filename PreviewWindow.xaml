@@ -8,6 +8,9 @@
         Closing="PreviewWindowClosing"
         Title="Preview" Height="800" Width="800">
     <Grid>
-        <WebBrowser x:Name="Browser"/>
+        <WebBrowser x:Name="Browser" Margin="0,0,0,20"/>
+        <Grid HorizontalAlignment="Right" Margin="297,659,0,0" VerticalAlignment="Bottom">
+            <ToggleButton x:Name="ButtonShowTop" Content="最前面に表示" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="-12,0,0,0" Width="85" Checked="ButtonShowTopChecked" Unchecked="ButtonShowTopUnChecked"/>
+        </Grid>
     </Grid>
 </Window>
