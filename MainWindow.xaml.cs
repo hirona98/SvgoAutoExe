@@ -184,6 +184,8 @@ namespace SvgoAutoExe
                 return false;
             }
 
+            svgo.Precision = (Int32)SliderPrecision.Value;
+
             fileWatcher.Path = System.IO.Path.GetDirectoryName(svgo.TarGetTargetFilePath);
             fileWatcher.Filter = System.IO.Path.GetFileName(svgo.TarGetTargetFilePath);
             fileWatcher.NotifyFilter = NotifyFilters.LastWrite;
