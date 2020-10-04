@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace SvgoAutoExe4
+namespace SvgoAutoExe
 {
     class Svgo
     {

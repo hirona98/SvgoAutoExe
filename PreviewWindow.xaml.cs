@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SvgoAutoExe4
+namespace SvgoAutoExe
 {
 
     /// <summary>

@@ -1,4 +1,4 @@
-# SvgoAutoExe4
+# SvgoAutoExe
 SVGの更新を監視して上書き保存時にSVGOを実行します
 
 # 設定ファイルについて

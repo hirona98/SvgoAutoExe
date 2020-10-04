@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace SvgoAutoExe4
+namespace SvgoAutoExe
 {
 
     /// <summary>

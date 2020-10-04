@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace SvgoAutoExe4
+namespace SvgoAutoExe
 {
     /// <summary>
     /// SizeWindow.xaml の相互作用ロジック

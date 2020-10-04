@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SvgoAutoExe4.Properties
+namespace SvgoAutoExe.Properties
 {
 
 
