@@ -5,9 +5,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:SvgoAutoExe" mc:Ignorable="d" Closing="PreviewWindowClosing" Title="Preview" Height="800" Width="800">
     <Grid>
-        <WebBrowser x:Name="Browser" Margin="0,0,0,20"/>
-        <Grid HorizontalAlignment="Right" Margin="297,659,0,0" VerticalAlignment="Bottom">
-            <ToggleButton x:Name="ButtonShowTop" Content="最前面に表示" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="-12,0,0,0" Width="85" Checked="ButtonShowTopChecked" Unchecked="ButtonShowTopUnChecked"/>
+        <!-- グリッド全体を定義 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- ブラウザ -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <WebBrowser x:Name="Browser"/>
+        </Grid>
+        <!-- ボタン -->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <ToggleButton x:Name="ButtonShowTop" Content="最前面に表示" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="85" Checked="ButtonShowTopChecked" Unchecked="ButtonShowTopUnChecked"/>
         </Grid>
     </Grid>
 </Window>
