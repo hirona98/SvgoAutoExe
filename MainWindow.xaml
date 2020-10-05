@@ -29,8 +29,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="対象ファイル: "/>
-            <TextBox x:Name="TextBoxSrcFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0"/>
-            <Button x:Name="ButtonSrcDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonSrcOpenDialog_Click" Width="70"/>
+            <TextBox x:Name="TextBoxSrcFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0" TabIndex="10"/>
+            <Button x:Name="ButtonSrcDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonSrcOpenDialog_Click" Width="70" TabIndex="20"/>
         </Grid>
 
         <!-- 出力ファイル -->
@@ -44,8 +44,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="出力ファイル: "/>
-            <TextBox x:Name="TextBoxDstFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0"/>
-            <Button x:Name="ButtonDstDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonDstOpenDialog_Click" Width="70"/>
+            <TextBox x:Name="TextBoxDstFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0" TabIndex="30"/>
+            <Button x:Name="ButtonDstDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonDstOpenDialog_Click" Width="70" TabIndex="40"/>
         </Grid>
 
         <!-- 設定 Precision -->
@@ -58,11 +58,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="Precision: "/>
-            <Slider x:Name="SliderPrecision" ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,15" Width="227" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft"/>
+            <Slider x:Name="SliderPrecision" ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,15" Width="227" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft" TabIndex="50"/>
         </Grid>
         <!-- 設定 チェックボックス系 -->
         <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
-            <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" Margin="20,5" VerticalAlignment="Center" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。"/>
+            <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" Margin="20,5" VerticalAlignment="Center" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60"/>
         </Grid>
 
         <!-- 監視開始/停止-->
@@ -74,8 +74,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="ButtonStart" Content="監視開始" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20,10,20" Width="70" Click="ButtonStart_Click"/>
-            <Button x:Name="ButtonStop" Content="停止" Grid.Row="0" Grid.Column="1" Padding="10,5" Width="70" Click="ButtonStop_Click" Margin="10,20,20,20"/>
+            <Button x:Name="ButtonStart" Content="監視開始" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20,10,20" Width="70" Click="ButtonStart_Click" TabIndex="90"/>
+            <Button x:Name="ButtonStop" Content="停止" Grid.Row="0" Grid.Column="1" Padding="10,5" Width="70" Click="ButtonStop_Click" Margin="10,20,20,20" TabIndex="100"/>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="332">
             <Grid.ColumnDefinitions>
@@ -85,8 +85,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ToggleButton x:Name="ButtonPreview" Content="プレビューウィンドウ" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10,20,20,20" Checked="VisiblePreviewWindow" Unchecked="UnVisiblePreviewWindow" />
-            <ToggleButton x:Name="ButtonShowSizeWindow" Content="サイズ表示ウィンドウ" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="20,20,10,20" Checked="VisibleSizeWindow" Unchecked="UnVisibleSizeWindow"/>
+            <ToggleButton x:Name="ButtonPreview" Content="プレビューウィンドウ" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10,20,20,20" Checked="VisiblePreviewWindow" Unchecked="UnVisiblePreviewWindow" TabIndex="80" />
+            <ToggleButton x:Name="ButtonShowSizeWindow" Content="サイズ表示ウィンドウ" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="20,20,10,20" Checked="VisibleSizeWindow" Unchecked="UnVisibleSizeWindow" TabIndex="70"/>
         </Grid>
     </Grid>
 

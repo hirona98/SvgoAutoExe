@@ -19,7 +19,7 @@
         </Grid>
         <!-- ボタン -->
         <Grid Grid.Row="1" Grid.Column="0">
-            <ToggleButton x:Name="ButtonShowTop" Content="最前面に表示" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="85" Checked="ButtonShowTopChecked" Unchecked="ButtonShowTopUnChecked"/>
+            <ToggleButton x:Name="ButtonShowTop" Content="最前面に表示" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="85" Checked="ButtonShowTopChecked" Unchecked="ButtonShowTopUnChecked" TabIndex="1"/>
         </Grid>
     </Grid>
 </Window>
