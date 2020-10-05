@@ -61,7 +61,7 @@ SvgoAutoExe.exeと同じディレクトリにsvgoディレクトリを作成し�
 ### 純正
 時間指定ができない。
 削除や更新をするにはインストーラの作成が必要。
-```
+```C#
 FileInfo svgFileInfo = new FileInfo(OutputFilePath);
 string message = String.Format("現在の容量: {0:#,0} Byte", svgFileInfo.Length);
 
@@ -76,7 +76,7 @@ notifier.Show(new ToastNotification(content));
 ### Notifications.Wpf
 https://github.com/Platonenkov/Notifications.Wpf
 Inkscapeの操作ができなくなる（フォーカスがずれる？）
-```
+```C#
 FileInfo svgFileInfo = new FileInfo(outputFilePath);
 string message = String.Format("    現在の容量: {0:#,0} Byte", svgFileInfo.Length);
 var notificationManager = new NotificationManager();
