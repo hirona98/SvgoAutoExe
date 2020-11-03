@@ -93,13 +93,21 @@ namespace SvgoAutoExe
         /// <param name="e"></param>
         private void ButtonDstOpenDialog_Click(object sender, EventArgs e)
         {
+            TextBoxDstFile.Text = SaveFileDialogOpen();
 
+        }
+
+        /// <summary>
+        /// 保存先の取得
+        /// </summary>
+        private string SaveFileDialogOpen()
+        {
             SaveFileDialog dstDialogOpen = new SaveFileDialog
             {
                 InitialDirectory = Directory.GetCurrentDirectory()
             };
 
-            if (String.IsNullOrEmpty(TextBoxSrcFile.Text) == false)
+            if (string.IsNullOrEmpty(TextBoxSrcFile.Text) == false)
             {
                 if (Directory.Exists(Path.GetDirectoryName(TextBoxSrcFile.Text)) == true)
                 {
@@ -113,8 +121,10 @@ namespace SvgoAutoExe
 
             if (dstDialogOpen.ShowDialog() == true)
             {
-                TextBoxDstFile.Text = dstDialogOpen.FileName;
+                return dstDialogOpen.FileName;
             }
+
+            return "";
         }
 
         /// <summary>
