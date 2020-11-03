@@ -257,11 +257,11 @@ namespace SvgoAutoExe
         {
             if (File.Exists(TextBoxDstFile.Text) == true)
             {
-                previewWindow.Browser.Navigate(TextBoxDstFile.Text);
+                previewWindow.Browser.Navigate(new Uri(TextBoxDstFile.Text));
             }
             else
             {
-                previewWindow.Browser.Navigate("https://www.compileheart.com/");
+                previewWindow.Browser.Navigate(new Uri("https://www.compileheart.com/"));
             }
 
             previewWindow.Show();

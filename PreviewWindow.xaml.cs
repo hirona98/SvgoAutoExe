@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace SvgoAutoExe
 {
@@ -20,7 +21,7 @@ namespace SvgoAutoExe
         {
             Dispatcher.Invoke(() =>
             {
-                Browser.Navigate(mainWindow.TextBoxDstFile.Text);
+                Browser.Navigate(new Uri(mainWindow.TextBoxDstFile.Text));
             });
         }
 
