@@ -20,7 +20,6 @@ namespace SvgoAutoExe
         public string ExePath { get; set; }
         public bool RemoveXmlns { get; set; }
 
-        private DateTime lastExecTime = new DateTime();
         private readonly SizeWindow sizeWindow;
         private readonly PreviewWindow previewWindow;
 
@@ -49,13 +48,6 @@ namespace SvgoAutoExe
         /// <param name="e"></param>
         public void ExecSvgo(object source, FileSystemEventArgs e)
         {
-            // アプリによりファイル更新時間が2回更新されてしまうため、1秒以上経過していた場合のみ実行する。
-            TimeSpan timeSpan = DateTime.Now - lastExecTime;
-            if (timeSpan.Seconds <= 1)
-            {
-                return;
-            }
-
             if (UpdateConfigFile() == false)
             {
                 return;
@@ -81,7 +73,6 @@ namespace SvgoAutoExe
             UpdateSizeWindow();
             previewWindow.PreviewRefresh();
 
-            lastExecTime = DateTime.Now;
         }
 
         /// <summary>
