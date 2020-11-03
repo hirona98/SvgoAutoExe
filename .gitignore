@@ -1,5 +1,8 @@
 # SVGO関連（ビルド時と同じバージョンを復元できるよう一部残す）
-svgo/*
+svgo/.svgo.yml
+svgo/lib/*
+svgo/plugins/*
+!svgo/lib/svgo.js
 !svgo/package.json
 !svgo/package-lock.json
 !svgo/svgo.exe
