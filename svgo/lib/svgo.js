@@ -30,7 +30,7 @@ SVGO.prototype.optimize = function (svgstr, info) {
         }
 
         var config = this.config,
-            maxPassCount = config.multipass ? 10 : 1,
+            maxPassCount = config.multipass ? 100 : 1,
             counter = 0,
             prevResultSize = Number.POSITIVE_INFINITY,
             optimizeOnceCallback = (svgjs) => {
