@@ -179,7 +179,7 @@ namespace SvgoAutoExe
             }
             if (Directory.Exists(Directory.GetParent(TextBoxDstFile.Text).ToString()) == false)
             {
-                MessageBox.Show("出力フォルダがありません");
+                MessageBox.Show("保存フォルダがありません");
                 UiEnabled();
                 return false;
             }
@@ -275,6 +275,16 @@ namespace SvgoAutoExe
         private void UnVisiblePreviewWindow(object sender, RoutedEventArgs e)
         {
             previewWindow.Hide();
+        }
+
+        /// <summary>
+        /// 自動分割保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonSplitOut_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
