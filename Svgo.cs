@@ -11,6 +11,7 @@ namespace SvgoAutoExe
 {
     class Svgo
     {
+        private const long SVG_MAX_BYTE = 1024 * 15;
         public Int32 Precision { get; set; }
         public string OutputFilePath { get; set; }
 
@@ -80,7 +81,13 @@ namespace SvgoAutoExe
         private void UpdateSizeWindow()
         {
             FileInfo svgFileInfo = new FileInfo(OutputFilePath);
-            sizeWindow.SetText(String.Format("FileSize: {0:#,0}Byte", svgFileInfo.Length));
+            long diffByte = svgFileInfo.Length - SVG_MAX_BYTE;
+            string sign = "";
+            if (diffByte >= 0)
+            {
+                sign = "+";
+            }
+            sizeWindow.SetText(String.Format("Size: {0:#,0}Byte ({1}{2:#,0})", svgFileInfo.Length, sign, diffByte));
         }
 
         /// <summary>
