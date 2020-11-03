@@ -15,7 +15,6 @@ namespace SvgoAutoExe
     {
         private const string FILE_TYPE = "SVG files (*.svg)|*.svg|All files (*.*)|*.*";
         private const string SAVA_FILE_TITLE = "保存先のファイルを選択してください";
-        private const string DEFAULT_SAVE_FILENAME = "\\Output.svg";
         private const string SVGO_EXE_PATH_CURRENT = "svgo\\svgo.exe";
 
         private readonly Svgo svgo;
@@ -83,7 +82,7 @@ namespace SvgoAutoExe
             if (srcDialogOpen.ShowDialog() == true)
             {
                 TextBoxSrcFile.Text = srcDialogOpen.FileName;
-                TextBoxDstFile.Text = Path.GetDirectoryName(TextBoxSrcFile.Text) + DEFAULT_SAVE_FILENAME;
+                TextBoxDstFile.Text = Path.GetDirectoryName(TextBoxSrcFile.Text) + "\\S_" + Path.GetFileName(TextBoxSrcFile.Text);
             }
         }
 
