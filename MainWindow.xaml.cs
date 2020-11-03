@@ -83,7 +83,7 @@ namespace SvgoAutoExe
             if (srcDialogOpen.ShowDialog() == true)
             {
                 TextBoxSrcFile.Text = srcDialogOpen.FileName;
-                TextBoxDstFile.Text = System.IO.Path.GetDirectoryName(TextBoxSrcFile.Text) + DEFAULT_SAVE_FILENAME;
+                TextBoxDstFile.Text = Path.GetDirectoryName(TextBoxSrcFile.Text) + DEFAULT_SAVE_FILENAME;
             }
         }
 
@@ -102,9 +102,9 @@ namespace SvgoAutoExe
 
             if (String.IsNullOrEmpty(TextBoxSrcFile.Text) == false)
             {
-                if (Directory.Exists(System.IO.Path.GetDirectoryName(TextBoxSrcFile.Text)) == true)
+                if (Directory.Exists(Path.GetDirectoryName(TextBoxSrcFile.Text)) == true)
                 {
-                    dstDialogOpen.InitialDirectory = System.IO.Path.GetDirectoryName(TextBoxSrcFile.Text);
+                    dstDialogOpen.InitialDirectory = Path.GetDirectoryName(TextBoxSrcFile.Text);
                 }
             }
 
@@ -143,7 +143,7 @@ namespace SvgoAutoExe
             DoEvents();
 
             svgo.ExePath = AppDomain.CurrentDomain.BaseDirectory + SVGO_EXE_PATH_CURRENT;
-            svgo.TarGetTargetFilePath = TextBoxSrcFile.Text;
+            svgo.InputFilePath = TextBoxSrcFile.Text;
             svgo.OutputFilePath = TextBoxDstFile.Text;
 
             if (StartWatching() == false)
@@ -186,8 +186,8 @@ namespace SvgoAutoExe
 
             svgo.Precision = (Int32)SliderPrecision.Value;
 
-            fileWatcher.Path = System.IO.Path.GetDirectoryName(svgo.TarGetTargetFilePath);
-            fileWatcher.Filter = System.IO.Path.GetFileName(svgo.TarGetTargetFilePath);
+            fileWatcher.Path = Path.GetDirectoryName(svgo.InputFilePath);
+            fileWatcher.Filter = Path.GetFileName(svgo.InputFilePath);
             fileWatcher.NotifyFilter = NotifyFilters.LastWrite;
             fileWatcher.Changed += new FileSystemEventHandler(svgo.ExecSvgo);
 

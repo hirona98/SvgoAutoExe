@@ -5,7 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Threading;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace SvgoAutoExe
 {
@@ -14,10 +15,10 @@ namespace SvgoAutoExe
         private const long SVG_MAX_BYTE = 1024 * 15;
         public Int32 Precision { get; set; }
         public string OutputFilePath { get; set; }
+        public string InputFilePath { get; set; }
 
         public string ExePath { get; set; }
         public bool RemoveXmlns { get; set; }
-        public string TarGetTargetFilePath { get; set; }
 
         private DateTime lastExecTime = new DateTime();
         private readonly SizeWindow sizeWindow;
@@ -33,12 +34,12 @@ namespace SvgoAutoExe
         /// SVGOに渡す引数を作成
         /// </summary>
         /// <returns></returns>
-        public string GetArgument()
+        public string GetArgument(string workFilePath)
         {
             string exeDir = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString();
             string optConfig = " --config=" + exeDir + "\\SvgoConfig.yml";
             string optOutput = " -o " + OutputFilePath;
-            return TarGetTargetFilePath + optOutput + optConfig;
+            return workFilePath + optOutput + optConfig;
         }
 
         /// <summary>
@@ -60,11 +61,14 @@ namespace SvgoAutoExe
                 return;
             }
 
+            string workFilePath = DeleteRasterImage(InputFilePath);
+
             // SVGO実行
             ProcessStartInfo psInfo = new ProcessStartInfo
             {
                 FileName = ExePath,
-                Arguments = GetArgument(),
+
+                Arguments = GetArgument(workFilePath),
                 CreateNoWindow = true,
                 UseShellExecute = false
             };
@@ -72,10 +76,30 @@ namespace SvgoAutoExe
             p.WaitForExit();
             p.Dispose();
 
+            File.Delete(workFilePath);
+
             UpdateSizeWindow();
             previewWindow.PreviewRefresh();
 
             lastExecTime = DateTime.Now;
+        }
+
+        /// <summary>
+        /// ラスター画像の削除
+        /// SVGOだと1枚しか削除されないため本アプリで処理する
+        /// コピーして編集したファイルのパスを戻す
+        /// </summary>
+        private string DeleteRasterImage(string inputFilePath)
+        {
+            string workFilePath = inputFilePath + ".tmp";
+            File.Copy(inputFilePath, workFilePath, true);
+
+            // 改行付きでヒットさせる方法を知らないのでこの方法
+            RegexReplaceFile(workFilePath, "\n ", ""); // 一度すべて1行にして
+            RegexReplaceFile(workFilePath, "/>", "/>\n"); // 要素の最後で改行を入れて
+            RegexReplaceFile(workFilePath, "<image .*/>\n", ""); // imageを削除
+
+            return workFilePath;
         }
 
         private void UpdateSizeWindow()
