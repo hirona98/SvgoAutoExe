@@ -151,13 +151,13 @@ namespace SvgoAutoExe
             try
             {
                 string allText;
-                using (StreamReader sReader = new StreamReader(filePath, Encoding.GetEncoding("UTF-8")))
+                using (StreamReader sReader = new StreamReader(filePath))
                 {
                     allText = sReader.ReadToEnd();
                     allText = Regex.Replace(allText, beforeRegexString, afterRegexString, RegexOptions.Multiline);
                 }
 
-                using (StreamWriter sWriter = new StreamWriter(filePath, false, Encoding.GetEncoding("UTF-8")))
+                using (StreamWriter sWriter = new StreamWriter(filePath, false))
                 {
                     sWriter.Write(allText);
                 }
