@@ -318,102 +318,10 @@ namespace SvgoAutoExe
             svgo.ExecSvgo(null, null);
 
             //軽量化したSVG（path）を分割する
-            SplitSvg(TextBoxDstFile.Text);
+            SvgXml svgXml = new SvgXml();
+            svgXml.SaveSplitSvg(TextBoxDstFile.Text);
 
             return;
-        }
-
-        /// <summary>
-        /// SVGの分割
-        /// </summary>
-        /// <param name="filePath"></param>
-        private bool SplitSvg(string filePath)
-        {
-            //TODO: 長すぎるので後で整理する
-            // <svg～>を取得
-            StreamReader reader = new StreamReader(filePath);
-            string readText = reader.ReadToEnd();
-            reader.Close();
-            int readTextEndPoint = readText.IndexOf(">");
-            string textSvgElm = readText.Remove(readTextEndPoint + 1);
-
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(filePath);
-            XmlNodeList xmlPathList = xmlDoc.SelectNodes("//*[local-name()='path']");
-
-            string textPathElm = "";
-            string textGradientElm = "";
-            string lastTextSplitSvg = "";
-            int saveCount = 1;
-            for (int i = 0; i < xmlPathList.Count; i++)
-            {
-                // urlがある場合は関連づいているlinearGradientを取得
-                Match matchId = Regex.Match(xmlPathList[i].OuterXml, "url\\(#(.[A-Za-z0-9])");
-                if (matchId.Value != "")
-                {
-                    string id = matchId.Value.Remove(0, 5);
-                    XmlNode searchById = xmlDoc.SelectSingleNode("//*[local-name()='linearGradient'][@id='" + id + "']");
-                    textGradientElm += searchById.OuterXml;
-                    // xlink:hrefがある場合は関連づいているlinearGradientを取得
-                    Match matchLink = Regex.Match(searchById.OuterXml, "xlink:href=\"#(.[A-Za-z0-9])");
-                    if (matchLink.Value != "")
-                    {
-                        string link = matchLink.Value.Remove(0, 13);
-                        XmlNode searchByLink = xmlDoc.SelectSingleNode("//*[local-name()='linearGradient'][@id='" + link + "']");
-                        textGradientElm += searchByLink.OuterXml;
-                    }
-                }
-                textPathElm += xmlPathList[i].OuterXml;
-
-                // 保存
-                string textSplitSvg = textSvgElm + "<defs>" + textGradientElm + "</defs>" + textPathElm + "</svg>";
-                if (textSplitSvg.Length >= Svgo.SVG_MAX_BYTE - 1000) // 面倒なので少なめで…
-                {
-                    SaveTextFile(MakeSplitFilePath(filePath, saveCount), lastTextSplitSvg);
-                    textGradientElm = "";
-                    textPathElm = "";
-                    saveCount++;
-                    // 最後だったら現在のデータも保存して抜ける
-                    if (i == xmlPathList.Count - 1)
-                    {
-                        SaveTextFile(MakeSplitFilePath(filePath, saveCount), textSplitSvg);
-                        break;
-                    }
-                }
-                // 最後だったら容量に関係なく終了
-                if (i == xmlPathList.Count - 1)
-                {
-                    SaveTextFile(MakeSplitFilePath(filePath, saveCount), textSplitSvg);
-                }
-                lastTextSplitSvg = textSplitSvg;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// ファイル保存
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// /// <param name="text"></param>
-        private void SaveTextFile(string filePath, string text)
-        {
-            using (StreamWriter sWriter = new StreamWriter(filePath, false, Encoding.GetEncoding("UTF-8")))
-            {
-                sWriter.Write(text);
-            }
-        }
-
-        /// <summary>
-        /// 分割保存ファイルパス作成
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// /// <param name="cnt"></param>
-        private string MakeSplitFilePath(string filePath, int cnt)
-        {
-            string dirPath = Path.GetDirectoryName(filePath);
-            string fileName = Path.GetFileName(filePath);
-
-            return dirPath + "\\" + cnt.ToString() + fileName;
         }
     }
 }

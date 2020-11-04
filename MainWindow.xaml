@@ -86,7 +86,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="ButtonSplitOut" Content="自動分割保存" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20,30,20" Width="100" ToolTip="14KB程度に分割保存します。（ファイル名の先頭に連番が付きます）" Click="ButtonSplitOut_Click" TabIndex="90" RenderTransformOrigin="0.24,0.571"/>
+            <Button x:Name="ButtonSplitOut" Content="自動分割保存" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20,30,20" Width="100" ToolTip="13KB程度に分割保存します。（ファイル名の先頭に連番が付きます）" Click="ButtonSplitOut_Click" TabIndex="90" RenderTransformOrigin="0.24,0.571"/>
             <Button x:Name="ButtonStart" Content="監視開始" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10,20,10,20" Width="70" Click="ButtonStart_Click" TabIndex="90"/>
             <Button x:Name="ButtonStop" Content="停止" Grid.Row="0" Grid.Column="2" Padding="10,5" Width="70" Click="ButtonStop_Click" Margin="10,20,20,20" TabIndex="100"/>
         </Grid>
