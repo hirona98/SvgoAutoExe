@@ -77,7 +77,7 @@ namespace SvgoAutoExe
             {
                 string id = matchId.Value.Remove(0, searchAttr.Length + 7);
                 XmlNode searchById = xmlDoc.SelectSingleNode("//*[local-name()='linearGradient'][@id='" + id + "']");
-                textElement = searchById.OuterXml;
+                textElement = Regex.Replace(searchById.OuterXml, "xlink:href=([^>]*)", "");
 
                 // xlink:hrefがある場合は関連づいているlinearGradientを取得
                 Match matchLink = Regex.Match(searchById.OuterXml, "xlink:href=\\\"#([A-Za-z0-9]*)");
@@ -85,7 +85,7 @@ namespace SvgoAutoExe
                 {
                     string link = matchLink.Value.Remove(0, 13);
                     XmlNode searchByLink = xmlDoc.SelectSingleNode("//*[local-name()='linearGradient'][@id='" + link + "']");
-                    textElement += searchByLink.OuterXml;
+                    textElement += Regex.Replace(searchByLink.OuterXml, "<linearGradient id=([^<]*)", "");
                 }
             }
             return textElement;
