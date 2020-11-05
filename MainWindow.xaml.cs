@@ -74,8 +74,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 対象ファイル参照ボタンクリック
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonSrcOpenDialog_Click(object sender, EventArgs e)
         {
             OpenFileDialog srcDialogOpen = new OpenFileDialog
@@ -94,8 +92,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 保存先ファイル参照ボタンクリック
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonDstOpenDialog_Click(object sender, EventArgs e)
         {
             TextBoxDstFile.Text = SaveFileDialogOpen();
@@ -149,8 +145,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 監視開始ボタンクリック
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonStart_Click(object sender, EventArgs e)
         {
             UiDisabled();
@@ -170,8 +164,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 監視ストップボタンクリック
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonStop_Click(object sender, EventArgs e)
         {
             StopWatching();
@@ -234,8 +226,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 描画更新用
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         private object ExitFrames(object obj)
         {
             ((DispatcherFrame)obj).Continue = false;
@@ -245,8 +235,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// サイズ表示ウインドウを開く
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void VisibleSizeWindow(object sender, RoutedEventArgs e)
         {
             sizeWindow.Show();
@@ -255,8 +243,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// サイズ表示ウインドウを閉じる
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void UnVisibleSizeWindow(object sender, RoutedEventArgs e)
         {
             sizeWindow.Hide();
@@ -265,8 +251,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// プレビューウインドウ表示
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void VisiblePreviewWindow(object sender, RoutedEventArgs e)
         {
             if (File.Exists(TextBoxDstFile.Text) == true)
@@ -284,8 +268,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// プレビューウインドウを閉じる
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void UnVisiblePreviewWindow(object sender, RoutedEventArgs e)
         {
             previewWindow.Hide();
@@ -294,8 +276,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 自動分割保存
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonSplitOut_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(TextBoxSrcFile.Text) == true)

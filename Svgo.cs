@@ -32,7 +32,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// SVGOに渡す引数を作成
         /// </summary>
-        /// <returns></returns>
         public string GetArgument(string workFilePath)
         {
             string exeDir = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString();
@@ -44,8 +43,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// SVGO実行
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="e"></param>
         public void ExecSvgo(object source, FileSystemEventArgs e)
         {
             if (UpdateConfigFile() == false)
@@ -108,7 +105,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 設定ファイル書き換え（良いYAMLライブラリがなかったので手抜き）
         /// </summary>
-        /// <returns>true:成功 / false:失敗</returns>
         private bool UpdateConfigFile()
         {
             string cfgPath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString() + "\\SvgoConfig.yml";
@@ -143,9 +139,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// ファイル書き換え（正規表現に対応しておく）
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="beforeRegexString"></param>
-        /// <param name="afterRegexString"></param>
         private bool RegexReplaceFile(string filePath, string beforeRegexString, string afterRegexString)
         {
             try

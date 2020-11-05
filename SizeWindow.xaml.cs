@@ -16,7 +16,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// テキストをセットする
         /// </summary>
-        /// <param name="text"></param>
         public void SetText(string text)
         {
             Dispatcher.Invoke(() =>
@@ -28,8 +27,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// ファイル容量ウインドウのドラッグ
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void SizeWindowMove(object sender, MouseButtonEventArgs e)
         {
             DragMove();

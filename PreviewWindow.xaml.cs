@@ -28,8 +28,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 閉じるボタン押下時
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void PreviewWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true; // インスタンスを残したままにしたいのでキャンセル
@@ -40,8 +38,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 最前面に固定
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonShowTopChecked(object sender, RoutedEventArgs e)
         {
             Topmost = true;
@@ -50,8 +46,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 最前面の固定を解除
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonShowTopUnChecked(object sender, RoutedEventArgs e)
         {
             Topmost = false;

@@ -105,8 +105,6 @@ namespace SvgoAutoExe
         /// <summary>
         /// 分割保存ファイルパス作成
         /// </summary>
-        /// <param name="filePath"></param>
-        /// /// <param name="cnt"></param>
         private string MakeSplitFilePath(string filePath, int cnt)
         {
             string dirPath = Path.GetDirectoryName(filePath);
