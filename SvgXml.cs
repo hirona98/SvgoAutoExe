@@ -37,7 +37,7 @@ namespace SvgoAutoExe
                 textGradientElm += FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill");
                 textGradientElm += FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke");
 
-                // 13KB超えたら前回ループのデータを保存
+                // 15KB超えたら前回ループのデータを保存
                 string textSplitSvg = textSvgElm + "<defs>" + textGradientElm + "</defs>" + textPathElm + "</svg>";
                 if (textSplitSvg.Length >= Svgo.SVG_MAX_BYTE)
                 {
