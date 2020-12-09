@@ -33,9 +33,9 @@ namespace SvgoAutoExe
             int saveCount = 1;
             for (int i = 0; i < xmlPathList.Count; i++)
             {
-                textPathElm += xmlPathList[i].OuterXml;
-                textGradientElm += FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill");
-                textGradientElm += FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke");
+                textPathElm += deleteWebURL2000(xmlPathList[i].OuterXml);
+                textGradientElm += deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill"));
+                textGradientElm += deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke"));
 
                 // 15KB超えたら前回ループのデータを保存
                 string textSplitSvg = textSvgElm + makeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
@@ -44,9 +44,9 @@ namespace SvgoAutoExe
                     SaveTextFile(MakeSplitFilePath(filePath, saveCount), textLastSplitSvg);
                     saveCount++;
                     // 次回保存は今回分から
-                    textPathElm = xmlPathList[i].OuterXml;
-                    textGradientElm = FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill");
-                    textGradientElm += FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke");
+                    textPathElm = deleteWebURL2000(xmlPathList[i].OuterXml);
+                    textGradientElm = deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill"));
+                    textGradientElm += deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke"));
                     // 最後だったら現在のデータも保存して抜ける
                     if (i == xmlPathList.Count - 1)
                     {
@@ -63,6 +63,15 @@ namespace SvgoAutoExe
                 textLastSplitSvg = textSplitSvg;
             }
             return true;
+        }
+
+        /// <summary>
+        /// xmlns="http://www.w3.org/2000/svg" を削除
+        /// OuterXmlで全ての要素に入っているため必要
+        /// </summary>
+        private string deleteWebURL2000(string text)
+        {
+            return Regex.Replace(text, "xmlns=\"http://www.w3.org/2000/svg\"", "");
         }
 
         /// <summary>
