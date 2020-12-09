@@ -38,7 +38,7 @@ namespace SvgoAutoExe
                 textGradientElm += FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke");
 
                 // 15KB超えたら前回ループのデータを保存
-                string textSplitSvg = textSvgElm + "<defs>" + textGradientElm + "</defs>" + textPathElm + "</svg>";
+                string textSplitSvg = textSvgElm + makeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
                 if (textSplitSvg.Length >= Svgo.SVG_MAX_BYTE)
                 {
                     SaveTextFile(MakeSplitFilePath(filePath, saveCount), textLastSplitSvg);
@@ -50,7 +50,7 @@ namespace SvgoAutoExe
                     // 最後だったら現在のデータも保存して抜ける
                     if (i == xmlPathList.Count - 1)
                     {
-                        textSplitSvg = textSvgElm + "<defs>" + textGradientElm + "</defs>" + textPathElm + "</svg>";
+                        textSplitSvg = textSvgElm + makeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
                         SaveTextFile(MakeSplitFilePath(filePath, saveCount), textSplitSvg);
                         break;
                     }
@@ -63,6 +63,19 @@ namespace SvgoAutoExe
                 textLastSplitSvg = textSplitSvg;
             }
             return true;
+        }
+
+        /// <summary>
+        /// グラデ要素があったら<defs>で囲む
+        /// </summary>
+        private string makeTextGradientDef(string gradientElm)
+        {
+            if (string.IsNullOrEmpty(gradientElm) == true)
+            {
+                return null;
+            }
+
+            return "<defs>" + gradientElm + "</defs>";
         }
 
         /// <summary>
