@@ -33,24 +33,24 @@ namespace SvgoAutoExe
             int saveCount = 1;
             for (int i = 0; i < xmlPathList.Count; i++)
             {
-                textPathElm += deleteWebURL2000(xmlPathList[i].OuterXml);
-                textGradientElm += deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill"));
-                textGradientElm += deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke"));
+                textPathElm += DeleteWebURL2000(xmlPathList[i].OuterXml);
+                textGradientElm += DeleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill"));
+                textGradientElm += DeleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke"));
 
                 // 15KB超えたら前回ループのデータを保存
-                string textSplitSvg = textSvgElm + makeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
+                string textSplitSvg = textSvgElm + MakeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
                 if (textSplitSvg.Length >= Svgo.SVG_MAX_BYTE)
                 {
                     SaveTextFile(MakeSplitFilePath(filePath, saveCount), textLastSplitSvg);
                     saveCount++;
                     // 次回保存は今回分から
-                    textPathElm = deleteWebURL2000(xmlPathList[i].OuterXml);
-                    textGradientElm = deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill"));
-                    textGradientElm += deleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke"));
+                    textPathElm = DeleteWebURL2000(xmlPathList[i].OuterXml);
+                    textGradientElm = DeleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill"));
+                    textGradientElm += DeleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke"));
                     // 最後だったら現在のデータも保存して抜ける
                     if (i == xmlPathList.Count - 1)
                     {
-                        textSplitSvg = textSvgElm + makeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
+                        textSplitSvg = textSvgElm + MakeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
                         SaveTextFile(MakeSplitFilePath(filePath, saveCount), textSplitSvg);
                         break;
                     }
@@ -69,7 +69,7 @@ namespace SvgoAutoExe
         /// xmlns="http://www.w3.org/2000/svg" を削除
         /// OuterXmlで全ての要素に入っているため必要
         /// </summary>
-        private string deleteWebURL2000(string text)
+        private string DeleteWebURL2000(string text)
         {
             return Regex.Replace(text, "xmlns=\"http://www.w3.org/2000/svg\"", "");
         }
@@ -77,7 +77,7 @@ namespace SvgoAutoExe
         /// <summary>
         /// グラデ要素があったら<defs>で囲む
         /// </summary>
-        private string makeTextGradientDef(string gradientElm)
+        private string MakeTextGradientDef(string gradientElm)
         {
             if (string.IsNullOrEmpty(gradientElm) == true)
             {
