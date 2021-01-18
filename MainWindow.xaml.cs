@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Xml;
 using System.Xml.Linq;
+using Microsoft.Web.WebView2.Core;
 
 namespace SvgoAutoExe
 {
@@ -26,6 +27,7 @@ namespace SvgoAutoExe
         private readonly FileSystemWatcher fileWatcher = new FileSystemWatcher();
         private readonly SizeWindow sizeWindow;
         private readonly PreviewWindow previewWindow;
+        private NepNepWindow nepNepWindow;
 
         /// <summary>
         /// メインウインドウ
@@ -302,6 +304,32 @@ namespace SvgoAutoExe
             svgXml.SaveSplitSvg(TextBoxDstFile.Text);
 
             return;
+        }
+
+        /// <summary>
+        /// ねぷねぷ有効
+        /// 停止機能は未実装
+        /// </summary>
+        private void EnabledNepNep(object sender, RoutedEventArgs e)
+        {
+
+            if (MessageBox.Show("本当にねぷねぷして良いですか？", "Information", MessageBoxButton.YesNo,
+                 MessageBoxImage.Information) == MessageBoxResult.Yes)
+            {
+                nepNepWindow = new NepNepWindow();
+                nepNepWindow.Show();
+                ButtonNepNep.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        /// <summary>
+        /// ねぷねぷ無効
+        /// </summary>
+        private void DisabledNepNep(object sender, RoutedEventArgs e)
+        {
+            /* ※ 機能保留 ※
+            nepNepWindow.Hide();
+            */
         }
     }
 }
