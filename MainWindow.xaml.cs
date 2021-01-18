@@ -1,4 +1,4 @@
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Linq;
@@ -158,6 +158,7 @@ namespace SvgoAutoExe
             svgo.InputFilePath = TextBoxSrcFile.Text;
             svgo.OutputFilePath = TextBoxDstFile.Text;
             svgo.JoinGradient = (bool)ChkJoinGradient.IsChecked;
+            svgo.RemoveXmlns = (bool)ChkRemoveXMLNS.IsChecked;
 
             if (StartWatching() == false)
             {
