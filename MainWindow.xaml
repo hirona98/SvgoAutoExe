@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:SvgoAutoExe" mc:Ignorable="d" Title="SvgoAutoExe (Ver 2.0 Beta1)" Height="300" Width="600">
+    xmlns:local="clr-namespace:SvgoAutoExe" mc:Ignorable="d" Title="SvgoAutoExe (Ver 2.1.0 ずっとベータ)" Height="300" Width="600">
 
     <Grid>
         <!-- グリッド全体を定義 -->
@@ -61,8 +61,13 @@
             <Slider x:Name="SliderPrecision" ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,15" Width="227" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft" TabIndex="50"/>
         </Grid>
         <!-- 設定 チェックボックス系 -->
-        <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
-            <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" Margin="20,5" VerticalAlignment="Center" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60"/>
+        <Grid Grid.Row="3" Grid.Column="0" Width="307" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" Margin="20,5,10,5" VerticalAlignment="Center" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60" Height="15"/>
+            <CheckBox x:Name="ChkJoinGradient" Content="グラデ要素を結合" Margin="10,5" VerticalAlignment="Center" ToolTip="グラデの要素がxlink:hrefで別れている場合に結合します。グラデが直る可能性があります。" TabIndex="65" Height="15" Grid.Column="1" HorizontalAlignment="Left" Width="106"/>
         </Grid>
         <!-- サイズ表示/プレビュー-->
         <Grid Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="297" Margin="10,0,0,0" RenderTransformOrigin="0.347,0.529">

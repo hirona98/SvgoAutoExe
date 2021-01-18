@@ -19,6 +19,7 @@ namespace SvgoAutoExe
 
         public string ExePath { get; set; }
         public bool RemoveXmlns { get; set; }
+        public bool JoinGradient { get; set; }
 
         private readonly SizeWindow sizeWindow;
         private readonly PreviewWindow previewWindow;
@@ -68,8 +69,12 @@ namespace SvgoAutoExe
             File.Delete(workFilePath);
 
             // 分割された要素を一つにまとめて保存
-            SvgXml svgXml = new SvgXml();
-            svgXml.SaveJoinSvg(OutputFilePath);
+
+            if (JoinGradient == true)
+            {
+                SvgXml svgXml = new SvgXml();
+                svgXml.SaveJoinSvg(OutputFilePath);
+            }
 
             UpdateSizeWindow();
             previewWindow.PreviewRefresh();

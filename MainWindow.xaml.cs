@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Linq;
@@ -52,6 +52,7 @@ namespace SvgoAutoExe
             TextBoxDstFile.IsEnabled = false;
             ButtonStart.IsEnabled = false;
             ChkRemoveXMLNS.IsEnabled = false;
+            ChkJoinGradient.IsEnabled = false;
             SliderPrecision.IsEnabled = false;
 
             ButtonStop.IsEnabled = true;
@@ -68,6 +69,7 @@ namespace SvgoAutoExe
             TextBoxDstFile.IsEnabled = true;
             ButtonStart.IsEnabled = true;
             ChkRemoveXMLNS.IsEnabled = true;
+            ChkJoinGradient.IsEnabled = true;
             SliderPrecision.IsEnabled = true;
 
             ButtonStop.IsEnabled = false;
@@ -155,6 +157,7 @@ namespace SvgoAutoExe
             svgo.ExePath = AppDomain.CurrentDomain.BaseDirectory + SVGO_EXE_PATH_CURRENT;
             svgo.InputFilePath = TextBoxSrcFile.Text;
             svgo.OutputFilePath = TextBoxDstFile.Text;
+            svgo.JoinGradient = (bool)ChkJoinGradient.IsChecked;
 
             if (StartWatching() == false)
             {
