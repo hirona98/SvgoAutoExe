@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -67,6 +67,10 @@ namespace SvgoAutoExe
 
             File.Delete(workFilePath);
 
+            // 分割された要素を一つにまとめて保存
+            SvgXml svgXml = new SvgXml();
+            svgXml.SaveJoinSvg(OutputFilePath);
+
             UpdateSizeWindow();
             previewWindow.PreviewRefresh();
 
@@ -109,13 +113,13 @@ namespace SvgoAutoExe
         {
             try
             {
-            string cfgPath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString() + "\\SvgoConfig.yml";
-            if (RemoveXmlns == true)
-            {
+                string cfgPath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString() + "\\SvgoConfig.yml";
+                if (RemoveXmlns == true)
+                {
                     RegexReplaceFile(cfgPath, "noSpaceAfterFlags: false", "noSpaceAfterFlags: true");
                 }
-            else
-            {
+                else
+                {
                     RegexReplaceFile(cfgPath, "noSpaceAfterFlags: true", "noSpaceAfterFlags: false");
                 }
 
@@ -135,18 +139,18 @@ namespace SvgoAutoExe
         /// ファイル書き換え（正規表現に対応しておく）
         /// </summary>
         private void RegexReplaceFile(string filePath, string beforeRegexString, string afterRegexString)
+        {
+            string allText;
+            using (StreamReader sReader = new StreamReader(filePath))
             {
-                string allText;
-                using (StreamReader sReader = new StreamReader(filePath))
-                {
-                    allText = sReader.ReadToEnd();
-                    allText = Regex.Replace(allText, beforeRegexString, afterRegexString, RegexOptions.Multiline);
-                }
-
-                using (StreamWriter sWriter = new StreamWriter(filePath, false))
-                {
-                    sWriter.Write(allText);
-                }
+                allText = sReader.ReadToEnd();
+                allText = Regex.Replace(allText, beforeRegexString, afterRegexString, RegexOptions.Multiline);
             }
+
+            using (StreamWriter sWriter = new StreamWriter(filePath, false))
+            {
+                sWriter.Write(allText);
+            }
+        }
     }
 }

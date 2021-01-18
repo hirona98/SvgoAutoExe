@@ -12,7 +12,43 @@ namespace SvgoAutoExe
     class SvgXml
     {
         /// <summary>
+        /// xlink:hrefで関連づいている要素を結合して保存
+        /// グラデバグが修正できる場合がある
+        /// </summary>
+        public bool SaveJoinSvg(string filePath)
+        {
+            // <svg～>を取得
+            StreamReader reader = new StreamReader(filePath);
+            string readText = reader.ReadToEnd();
+            reader.Close();
+            int readTextEndPoint = readText.IndexOf(">");
+            string textSvgElm = readText.Remove(readTextEndPoint + 1);
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(filePath);
+            XmlNodeList xmlPathList = xmlDoc.SelectNodes("svg//path");
+
+            string textPathElm = "";
+            string textGradientElm = "";
+            for (int i = 0; i < xmlPathList.Count; i++)
+            {
+                textPathElm += DeleteWebURL2000(xmlPathList[i].OuterXml);
+                textGradientElm += DeleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "fill"));
+                textGradientElm += DeleteWebURL2000(FindConnectionElement(xmlDoc, xmlPathList[i].OuterXml, "stroke"));
+
+                string textSplitSvg = textSvgElm + MakeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
+                if (i == xmlPathList.Count - 1)
+                {
+                    SaveTextFile(filePath, textSplitSvg);
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// SVGの分割
+        /// SaveJoinSvgの分割保存版
         /// </summary>
         public bool SaveSplitSvg(string filePath)
         {
