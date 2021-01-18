@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -107,29 +107,24 @@ namespace SvgoAutoExe
         /// </summary>
         private bool UpdateConfigFile()
         {
+            try
+            {
             string cfgPath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString() + "\\SvgoConfig.yml";
             if (RemoveXmlns == true)
             {
-                if (RegexReplaceFile(cfgPath, "noSpaceAfterFlags: false", "noSpaceAfterFlags: true") == false)
-                {
-                    return false;
+                    RegexReplaceFile(cfgPath, "noSpaceAfterFlags: false", "noSpaceAfterFlags: true");
                 }
-            }
             else
             {
-                if (RegexReplaceFile(cfgPath, "noSpaceAfterFlags: true", "noSpaceAfterFlags: false") == false)
-                {
-                    return false;
+                    RegexReplaceFile(cfgPath, "noSpaceAfterFlags: true", "noSpaceAfterFlags: false");
                 }
-            }
 
-            if (RegexReplaceFile(cfgPath, "floatPrecision: .", "floatPrecision: " + Precision) == false)
-            {
-                return false;
+                RegexReplaceFile(cfgPath, "floatPrecision: .", "floatPrecision: " + Precision);
+                RegexReplaceFile(cfgPath, "floatPrecision: 0 # このプラグインは最低値1", "floatPrecision: 1 # このプラグインは最低値1");
             }
-
-            if (RegexReplaceFile(cfgPath, "floatPrecision: 0 # このプラグインは最低値1", "floatPrecision: 1 # このプラグインは最低値1") == false)
+            catch
             {
+                MessageBox.Show("設定ファイルの書き換えができません。ファイル有無やアクセス権を確認してください。");
                 return false;
             }
 
@@ -139,9 +134,7 @@ namespace SvgoAutoExe
         /// <summary>
         /// ファイル書き換え（正規表現に対応しておく）
         /// </summary>
-        private bool RegexReplaceFile(string filePath, string beforeRegexString, string afterRegexString)
-        {
-            try
+        private void RegexReplaceFile(string filePath, string beforeRegexString, string afterRegexString)
             {
                 string allText;
                 using (StreamReader sReader = new StreamReader(filePath))
@@ -155,13 +148,5 @@ namespace SvgoAutoExe
                     sWriter.Write(allText);
                 }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("設定ファイルの書き換えができません。ファイル有無やアクセス権を確認してください。");
-                return false;
-            }
-
-            return true;
-        }
     }
 }
