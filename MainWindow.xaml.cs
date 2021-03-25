@@ -35,7 +35,6 @@ namespace SvgoAutoExe
         public MainWindow()
         {
             InitializeComponent();
-            ButtonStop.IsEnabled = false;
             sizeWindow = new SizeWindow();
             previewWindow = new PreviewWindow(this);
             svgo = new Svgo(sizeWindow, previewWindow);
@@ -50,12 +49,10 @@ namespace SvgoAutoExe
             ButtonSrcDialogOpen.IsEnabled = false;
             ButtonDstDialogOpen.IsEnabled = false;
             TextBoxDstFile.IsEnabled = false;
-            ButtonStart.IsEnabled = false;
+            RealtimeExec.IsEnabled = false;
             ChkRemoveXMLNS.IsEnabled = false;
             ChkJoinGradient.IsEnabled = false;
             SliderPrecision.IsEnabled = false;
-
-            ButtonStop.IsEnabled = true;
         }
 
         /// <summary>
@@ -67,12 +64,10 @@ namespace SvgoAutoExe
             ButtonSrcDialogOpen.IsEnabled = true;
             ButtonDstDialogOpen.IsEnabled = true;
             TextBoxDstFile.IsEnabled = true;
-            ButtonStart.IsEnabled = true;
+            RealtimeExec.IsEnabled = true;
             ChkRemoveXMLNS.IsEnabled = true;
             ChkJoinGradient.IsEnabled = true;
             SliderPrecision.IsEnabled = true;
-
-            ButtonStop.IsEnabled = false;
         }
 
         /// <summary>
@@ -147,9 +142,9 @@ namespace SvgoAutoExe
         }
 
         /// <summary>
-        /// 監視開始ボタンクリック
+        /// リアルタイム実行開始
         /// </summary>
-        private void ButtonStart_Click(object sender, EventArgs e)
+        private void EnabledExec(object sender, EventArgs e)
         {
             UiDisabled();
             DoEvents();
@@ -168,9 +163,9 @@ namespace SvgoAutoExe
         }
 
         /// <summary>
-        /// 監視ストップボタンクリック
+        /// リアルタイム実行解除
         /// </summary>
-        private void ButtonStop_Click(object sender, EventArgs e)
+        private void DisabledExec(object sender, EventArgs e)
         {
             StopWatching();
 
