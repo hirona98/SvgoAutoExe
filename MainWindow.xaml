@@ -3,13 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:SvgoAutoExe" mc:Ignorable="d" Title="SvgoAutoExe (Ver 2.1.0 ずっとベータ)" Height="300" Width="600">
+    xmlns:local="clr-namespace:SvgoAutoExe" mc:Ignorable="d" Title="SvgoAutoExe (Ver 2.1.0 ずっとベータ)" Height="429" Width="625">
 
-    <Grid>
-        <!-- グリッド全体を定義 -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="11,0" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -19,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <!-- 対象ファイル -->
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
@@ -28,9 +24,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="対象ファイル: "/>
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0" Text="対象ファイル: "/>
             <TextBox x:Name="TextBoxSrcFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0" TabIndex="10"/>
-            <Button x:Name="ButtonSrcDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonSrcOpenDialog_Click" Width="70" TabIndex="20"/>
+            <Button x:Name="ButtonSrcDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10" Padding="20,5" Click="ButtonSrcOpenDialog_Click" Width="70" TabIndex="20"/>
         </Grid>
 
         <!-- 保存ファイル -->
@@ -43,9 +39,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="保存ファイル: "/>
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0" Text="保存ファイル: "/>
             <TextBox x:Name="TextBoxDstFile" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="5" Margin="0" TabIndex="30"/>
-            <Button x:Name="ButtonDstDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10,10,20,10" Padding="20,5" Click="ButtonDstOpenDialog_Click" Width="70" TabIndex="40"/>
+            <Button x:Name="ButtonDstDialogOpen" Grid.Row="0" Grid.Column="2" Content="参照" VerticalAlignment="Center" Margin="10" Padding="20,5" Click="ButtonDstOpenDialog_Click" Width="70" TabIndex="40"/>
         </Grid>
 
         <!-- 設定 Precision -->
@@ -54,49 +50,65 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0" Text="Precision: "/>
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0" Text="Precision: "/>
             <Slider x:Name="SliderPrecision" ValueChanged="PrecisionSliderValueChanged" Value="3" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,15,0,15" Width="227" TickPlacement="Both" IsSnapToTickEnabled="True" Maximum="8" AutoToolTipPlacement="TopLeft" TabIndex="50"/>
         </Grid>
-        <!-- 設定 チェックボックス系 -->
-        <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition MinWidth="152" Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" Margin="20,5,10,5" VerticalAlignment="Center" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60" Height="15" HorizontalAlignment="Left"/>
-            <CheckBox x:Name="ChkJoinGradient" Content="グラデ要素を結合" Margin="10,5,0,5" VerticalAlignment="Center" ToolTip="グラデの要素がxlink:hrefで別れている場合に結合します。グラデが直る可能性があります。" TabIndex="65" Height="15" Grid.Column="2" HorizontalAlignment="Left"/>
-            <CheckBox x:Name="ChkRemoveXMLNS_Copy" Content="Prefer viewBox to width/height" Margin="10,5" VerticalAlignment="Center" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60" Grid.Column="1"/>
+        <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="193">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60" Height="15" RenderTransformOrigin="3.229,5.633" Width="105" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="ChkJoinGradient" Content="グラデ要素を結合" ToolTip="グラデの要素がxlink:hrefで別れている場合に結合します。グラデが直る可能性があります。" TabIndex="65" Height="16" HorizontalAlignment="Left" Grid.Row="2" Width="104" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <CheckBox x:Name="ChkRemoveXMLNS_Copy" Content="Prefer viewBox to width/height" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
         </Grid>
         <!-- サイズ表示/プレビュー-->
-        <Grid Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="297" Margin="10,0,0,0" RenderTransformOrigin="0.347,0.529">
+        <Grid Grid.Row="4" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="284*"/>
+                <ColumnDefinition Width="311*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <ToggleButton x:Name="ButtonPreview" Content="プレビュー" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10,20" Checked="VisiblePreviewWindow" Unchecked="UnVisiblePreviewWindow" TabIndex="80" RenderTransformOrigin="-0.173,0.357" Width="75" />
-            <ToggleButton x:Name="ButtonShowSizeWindow" Content="サイズ表示" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20" Checked="VisibleSizeWindow" Unchecked="UnVisibleSizeWindow" TabIndex="70" Width="75"/>
-            <ToggleButton x:Name="ButtonNepNep" Content="ねぷねぷ" Grid.Column="2" Padding="10,5" Margin="10,20" Width="75" Checked="EnabledNepNep" Unchecked="DisabledNepNep" TabIndex="75"/>
-        </Grid>
-        <!-- 監視開始/停止-->
-        <Grid Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button x:Name="ButtonSplitOut" Content="分割保存" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10,20" Width="70" ToolTip="15KiB(15×1024Byte)以下に分割保存します。（ファイル名の先頭に連番が付きます）" Click="ButtonSplitOut_Click" TabIndex="90" RenderTransformOrigin="0.24,0.571"/>
-            <ToggleButton x:Name="RealtimeExec" Content="リアルタイム実行" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10,20,10,20" Width="70" Checked="EnabledExec" Unchecked="DisabledExec" TabIndex="90"/>
+            <GroupBox Header="自動分割" HorizontalAlignment="Left" Margin="10,10,0,10" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="71*"/>
+                        <RowDefinition Height="70*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Margin="10,0" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="92*"/>
+                            <ColumnDefinition Width="71*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="分割サイズ:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="64" Margin="0,9,0,0"/>
+                        <TextBox Height="24" TextWrapping="Wrap" Text="1000" Width="53" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Label Content="Byte" Grid.Column="2" Height="26" Width="33" Margin="0,9,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                    <Button x:Name="ButtonSplitOut" Content="分割保存" Padding="10,5" ToolTip="15KiB(15×1024Byte)以下に分割保存します。（ファイル名の先頭に連番が付きます）" Click="ButtonSplitOut_Click" TabIndex="90" RenderTransformOrigin="0.24,0.571" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+                </Grid>
+            </GroupBox>
+            <Grid Grid.Column="1" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="60"/>
+                    <RowDefinition Height="Auto" MinHeight="65"/>
+                </Grid.RowDefinitions>
+                <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" Margin="0,0,93,-213" Height="0" Width="0"/>
+                <Grid RenderTransformOrigin="0.347,0.529" HorizontalAlignment="Right" Width="285" Margin="0,0,0,2" VerticalAlignment="Bottom" Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton x:Name="ButtonPreview" Content="プレビュー" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10" Checked="VisiblePreviewWindow" Unchecked="UnVisiblePreviewWindow" TabIndex="80" RenderTransformOrigin="-0.173,0.357" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <ToggleButton x:Name="ButtonShowSizeWindow" Content="サイズ表示" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10" Checked="VisibleSizeWindow" Unchecked="UnVisibleSizeWindow" TabIndex="70" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ToggleButton x:Name="ButtonNepNep" Content="ねぷねぷ" Grid.Column="2" Padding="10,5" Margin="10" Width="75" Checked="EnabledNepNep" Unchecked="DisabledNepNep" TabIndex="75" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <ToggleButton x:Name="RealtimeExec" Content="リアルタイム実行" Padding="10,5" Checked="EnabledExec" Unchecked="DisabledExec" TabIndex="90" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="28" Width="100" Margin="0,0,10,15"/>
+            </Grid>
         </Grid>
     </Grid>
 
