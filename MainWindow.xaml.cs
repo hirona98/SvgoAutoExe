@@ -10,10 +10,10 @@ using System.Windows.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Web.WebView2.Core;
+using System.Globalization;
 
 namespace SvgoAutoExe
 {
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -22,6 +22,8 @@ namespace SvgoAutoExe
         private const string FILE_TYPE = "SVG files (*.svg)|*.svg|All files (*.*)|*.*";
         private const string SAVA_FILE_TITLE = "保存先のファイルを選択してください";
         private const string SVGO_EXE_PATH_CURRENT = "svgo\\svgo.exe";
+        private const long MAX_SPLIT_BYTE = 10 * 1024 * 1024;
+        private const long MIN_SPLIT_BYTE = 3 * 1024;
 
         private readonly Svgo svgo;
         private readonly FileSystemWatcher fileWatcher = new FileSystemWatcher();
@@ -38,6 +40,7 @@ namespace SvgoAutoExe
             sizeWindow = new SizeWindow();
             previewWindow = new PreviewWindow(this);
             svgo = new Svgo(sizeWindow, previewWindow);
+            TextSplitSize.Text = String.Format("{0:#,0}", Svgo.SVG_MAX_BYTE);
         }
 
         /// <summary>
@@ -273,6 +276,48 @@ namespace SvgoAutoExe
         {
             previewWindow.Hide();
         }
+
+        /// <summary>
+        /// 分割サイズテキストの変更
+        /// </summary>
+        private void TextSplitByte_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                long splitByte = long.Parse(TextSplitSize.Text, NumberStyles.AllowThousands);
+                TextSplitSize.Text = String.Format("{0:#,0}", splitByte);
+            }
+            catch
+            {
+                // 何もしない（エラーチェックはFostFocusで行う）
+            }
+        }
+
+        /// <summary>
+        /// 分割サイズテキストボックスから抜ける
+        /// </summary>
+        private void TextSplitByte_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                long splitByte = long.Parse(TextSplitSize.Text, NumberStyles.AllowThousands);
+                if (splitByte > MAX_SPLIT_BYTE)
+                {
+                    splitByte = MAX_SPLIT_BYTE;
+                }
+                else if (splitByte < MIN_SPLIT_BYTE)
+                {
+                    splitByte = MIN_SPLIT_BYTE;
+                }
+
+                TextSplitSize.Text = String.Format("{0:#,0}", splitByte);
+            }
+            catch
+            {
+                TextSplitSize.Text = String.Format("{0:#,0}", Svgo.SVG_MAX_BYTE);
+            }
+        }
+
 
         /// <summary>
         /// 自動分割保存

@@ -13,6 +13,7 @@ namespace SvgoAutoExe
     class Svgo
     {
         public const long SVG_MAX_BYTE = 1024 * 15;
+        public long SplitByte { get; set; }
         public Int32 Precision { get; set; }
         public string OutputFilePath { get; set; }
         public string InputFilePath { get; set; }
