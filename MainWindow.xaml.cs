@@ -40,7 +40,7 @@ namespace SvgoAutoExe
             sizeWindow = new SizeWindow();
             previewWindow = new PreviewWindow(this);
             svgo = new Svgo(sizeWindow, previewWindow);
-            TextSplitSize.Text = String.Format("{0:#,0}", Svgo.SVG_MAX_BYTE);
+            TextBoxSplitSize.Text = String.Format("{0:#,0}", Svgo.SVG_MAX_BYTE);
             TextBoxSrcFile.AddHandler(TextBox.DragOverEvent, new DragEventHandler(TextBoxSrcFile_DragOver), true);
             TextBoxSrcFile.AddHandler(TextBox.DropEvent, new DragEventHandler(TextBoxSrcFile_Drop), true);
         }
@@ -321,8 +321,8 @@ namespace SvgoAutoExe
         {
             try
             {
-                long splitByte = long.Parse(TextSplitSize.Text, NumberStyles.AllowThousands);
-                TextSplitSize.Text = String.Format("{0:#,0}", splitByte);
+                long splitByte = long.Parse(TextBoxSplitSize.Text, NumberStyles.AllowThousands);
+                TextBoxSplitSize.Text = String.Format("{0:#,0}", splitByte);
             }
             catch
             {
@@ -337,7 +337,7 @@ namespace SvgoAutoExe
         {
             try
             {
-                long splitByte = long.Parse(TextSplitSize.Text, NumberStyles.AllowThousands);
+                long splitByte = long.Parse(TextBoxSplitSize.Text, NumberStyles.AllowThousands);
                 if (splitByte > MAX_SPLIT_BYTE)
                 {
                     splitByte = MAX_SPLIT_BYTE;
@@ -347,11 +347,11 @@ namespace SvgoAutoExe
                     splitByte = MIN_SPLIT_BYTE;
                 }
 
-                TextSplitSize.Text = String.Format("{0:#,0}", splitByte);
+                TextBoxSplitSize.Text = String.Format("{0:#,0}", splitByte);
             }
             catch
             {
-                TextSplitSize.Text = String.Format("{0:#,0}", Svgo.SVG_MAX_BYTE);
+                TextBoxSplitSize.Text = String.Format("{0:#,0}", Svgo.SVG_MAX_BYTE);
             }
         }
 
@@ -382,7 +382,7 @@ namespace SvgoAutoExe
 
             //軽量化したSVG（path）を分割する
             SvgXml svgXml = new SvgXml();
-            svgXml.SaveSplitSvg(TextBoxDstFile.Text);
+            svgXml.SaveSplitSvg(TextBoxDstFile.Text, long.Parse(TextBoxSplitSize.Text, NumberStyles.AllowThousands));
 
             return;
         }

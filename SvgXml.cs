@@ -50,7 +50,7 @@ namespace SvgoAutoExe
         /// SVGの分割
         /// SaveJoinSvgの分割保存版
         /// </summary>
-        public bool SaveSplitSvg(string filePath)
+        public bool SaveSplitSvg(string filePath, long splitByte)
         {
             // <svg～>を取得
             StreamReader reader = new StreamReader(filePath);
@@ -75,7 +75,7 @@ namespace SvgoAutoExe
 
                 // 15KB超えたら前回ループのデータを保存
                 string textSplitSvg = textSvgElm + MakeTextGradientDef(textGradientElm) + textPathElm + "</svg>";
-                if (textSplitSvg.Length >= Svgo.SVG_MAX_BYTE)
+                if (textSplitSvg.Length >= splitByte)
                 {
                     SaveTextFile(MakeSplitFilePath(filePath, saveCount), textLastSplitSvg);
                     saveCount++;

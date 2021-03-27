@@ -86,10 +86,10 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="分割サイズ:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,9,0,0"/>
-                        <TextBox x:Name="TextSplitSize" LostFocus="TextSplitByte_LostFocus" TextChanged="TextSplitByte_TextChanged" Height="24" TextWrapping="Wrap" Width="95" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,10,0,0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" TabIndex="67"/>
+                        <TextBox x:Name="TextBoxSplitSize" LostFocus="TextSplitByte_LostFocus" TextChanged="TextSplitByte_TextChanged" Height="24" TextWrapping="Wrap" Width="95" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,10,0,0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" TabIndex="67"/>
                         <Label Content="Byte" Grid.Column="2" Height="26" Width="33" Margin="0,9,10,0" VerticalAlignment="Top"/>
                     </Grid>
-                    <Button x:Name="ButtonSplitOut" Content="分割保存" Padding="10,5" ToolTip="15KiB(15×1024Byte)以下に分割保存します。（ファイル名の先頭に連番が付きます）" Click="ButtonSplitOut_Click" TabIndex="68" RenderTransformOrigin="0.24,0.571" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+                    <Button x:Name="ButtonSplitOut" Content="分割保存" Padding="10,5" ToolTip="指定したサイズで分割保存します。（ファイル名の先頭に連番が付きます）" Click="ButtonSplitOut_Click" TabIndex="68" RenderTransformOrigin="0.24,0.571" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
                 </Grid>
             </GroupBox>
             <Grid Grid.Column="1" VerticalAlignment="Bottom">
