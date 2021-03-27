@@ -107,7 +107,7 @@
                     </Grid.ColumnDefinitions>
                     <ToggleButton x:Name="ButtonPreview" Content="プレビュー" Grid.Row="0" Grid.Column="1" Padding="10,5" Margin="10" Checked="VisiblePreviewWindow" Unchecked="UnVisiblePreviewWindow" TabIndex="80" RenderTransformOrigin="-0.173,0.357" Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <ToggleButton x:Name="ButtonShowSizeWindow" Content="サイズ表示" Grid.Row="0" Grid.Column="0" Padding="10,5" Margin="10" Checked="VisibleSizeWindow" Unchecked="UnVisibleSizeWindow" TabIndex="70" Width="75" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <ToggleButton x:Name="ButtonNepNep" Content="ねぷねぷ" Grid.Column="2" Padding="10,5" Margin="10" Width="75" Checked="EnabledNepNep" Unchecked="DisabledNepNep" TabIndex="75" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ToggleButton x:Name="ButtonNepNep" Content="ねぷねぷ" Grid.Column="2" Padding="10,5" Margin="10" Width="75" Checked="EnabledNepNep" Unchecked="DisabledNepNep" TabIndex="85" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
                 <!-- 実行 -->
                 <ToggleButton x:Name="RealtimeExec" Content="軽量化実行" Padding="10,5" Checked="EnabledExec" Unchecked="DisabledExec" TabIndex="90" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="28" Width="100" Margin="0,0,10,15"/>
