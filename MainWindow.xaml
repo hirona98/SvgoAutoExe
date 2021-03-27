@@ -1,9 +1,9 @@
-<Window x:Class="SvgoAutoExe.MainWindow"
+﻿<Window x:Class="SvgoAutoExe.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:SvgoAutoExe" mc:Ignorable="d" Title="SvgoAutoExe (Ver 2.2.0 ずっとベータ)" Height="429" Width="625">
+        mc:Ignorable="d" Title="SvgoAutoExe (Ver 2.2.0 ずっとベータ)" Height="420" Width="625">
 
     <Grid Margin="11,0" VerticalAlignment="Top">
         <Grid.RowDefinitions>
@@ -76,7 +76,7 @@
                         <RowDefinition Height="71*"/>
                         <RowDefinition Height="70*"/>
                     </Grid.RowDefinitions>
-                    <Grid Margin="10,0" HorizontalAlignment="Left">
+                    <Grid Margin="0" HorizontalAlignment="Left">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="92*"/>
@@ -85,9 +85,9 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Content="分割サイズ:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="64" Margin="0,9,0,0"/>
+                        <Label Content="分割サイズ:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,9,0,0"/>
                         <TextBox x:Name="TextSplitSize" LostFocus="TextSplitByte_LostFocus" TextChanged="TextSplitByte_TextChanged" Height="24" TextWrapping="Wrap" Width="95" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,10,0,0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" TabIndex="67"/>
-                        <Label Content="Byte" Grid.Column="2" Height="26" Width="33" Margin="0,9,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Byte" Grid.Column="2" Height="26" Width="33" Margin="0,9,10,0" VerticalAlignment="Top"/>
                     </Grid>
                     <Button x:Name="ButtonSplitOut" Content="分割保存" Padding="10,5" ToolTip="15KiB(15×1024Byte)以下に分割保存します。（ファイル名の先頭に連番が付きます）" Click="ButtonSplitOut_Click" TabIndex="68" RenderTransformOrigin="0.24,0.571" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
                 </Grid>
@@ -110,7 +110,7 @@
                     <ToggleButton x:Name="ButtonNepNep" Content="ねぷねぷ" Grid.Column="2" Padding="10,5" Margin="10" Width="75" Checked="EnabledNepNep" Unchecked="DisabledNepNep" TabIndex="85" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
                 <!-- 実行 -->
-                <ToggleButton x:Name="RealtimeExec" Content="軽量化実行" Padding="10,5" Checked="EnabledExec" Unchecked="DisabledExec" TabIndex="90" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="28" Width="100" Margin="0,0,10,15"/>
+                <ToggleButton x:Name="RealtimeExec" Content="リアルタイム軽量化" Padding="10,5" Checked="EnabledExec" Unchecked="DisabledExec" TabIndex="90" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="28" Margin="0,0,10,15"/>
             </Grid>
         </Grid>
     </Grid>
