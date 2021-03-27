@@ -3,6 +3,9 @@
 * 自動分割保存を実行すると15KiB未満にファイルを分割して出力します。（ファイル名に連番が付加されます）
 
 # 使い方
+## ダウンロード
+https://github.com/hiro-98/SvgoAutoExe/releases/download/v2.1.0/SvgoAutoExe_2.1.0.zip
+
 ## 起動方法
 解凍したフォルダで SvgoAutoExe.exe を実行してください。
 
