@@ -4,19 +4,21 @@
 
 # 使い方
 ## ダウンロード
-https://github.com/hiro-98/SvgoAutoExe/releases/download/v2.1.0/SvgoAutoExe_2.1.0.zip
+https://github.com/hiro-98/SvgoAutoExe/releases/download/v2.2.0/SvgoAutoExe_2.2.0.zip
 
 ## 起動方法
 解凍したフォルダで SvgoAutoExe.exe を実行してください。
 
 ## メインウィンドウ
-![image](https://user-images.githubusercontent.com/36811209/98239995-20cbdf80-1fac-11eb-926b-678f3af8291c.png)
-### リアルタイムで軽量化
-1. Inkscapeなどで編集中のSVGファイルを"対象ファイル"で選択します。
-1. "監視開始"ボタンを押下します。
-1. 編集中のSVGファイルを上書き保存すると自動的に軽量化を行い"保存ファイル"に保存されます。
+![メインウインドウ](https://user-images.githubusercontent.com/36811209/112711419-990b5100-8f0b-11eb-956b-f411ed6313b0.png)
+
+### リアルタイム軽量化
+1. Inkscapeなどで編集中のSVGファイルを`対象ファイル`で選択します。
+1. `リアルタイム軽量化`ボタンを押下します。
+1. 編集中のSVGファイルを上書き保存すると自動的に軽量化を行い`保存ファイル`に保存されます。
+
 ### 自動分割
-"自動分割保存"を押下すると15KiB未満のファイルに分割して"保存ファイル"に連番付きで保存されます。
+`自動分割保存`を押下すると`分割サイズ`で指定した大きさに分割して`保存ファイル`に連番付きで保存されます。
 大きい番号が上のレイヤーです。
 
 ## プレビューウィンドウ
@@ -67,15 +69,23 @@ SvgoAutoExe.exeと同じディレクトリにsvgoディレクトリを作成し�
 * WPFアプリケーション
 * SVGO 1.3.2
 
+
 ## 補足
 初めてのオブジェクト指向プログラミング、とりあえず動くようにという方針で書いたので書き方は真似しないでね。
 
-## メモ
+----
+# ライセンス
+アイコン画像はラム音さんからお借りしました。
+https://www.pixiv.net/users/6166078
 
-### 通知について
+
+----
+# メモ
+
+## 通知について
 トースト通知を出したかったが問題があったため断念
 
-#### 純正
+### 純正
 時間指定ができない。
 削除や更新をするにはインストーラの作成が必要。
 ```C#
@@ -90,7 +100,7 @@ var notifier = ToastNotificationManager.CreateToastNotifier("Microsoft.Windows.C
 notifier.Show(new ToastNotification(content));
 ```
 
-#### Notifications.Wpf
+### Notifications.Wpf
 https://github.com/Platonenkov/Notifications.Wpf
 Inkscapeの操作ができなくなる（フォーカスがずれる？）
 ```C#
