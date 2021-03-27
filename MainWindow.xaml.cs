@@ -52,10 +52,11 @@ namespace SvgoAutoExe
             ButtonSrcDialogOpen.IsEnabled = false;
             ButtonDstDialogOpen.IsEnabled = false;
             TextBoxDstFile.IsEnabled = false;
-            RealtimeExec.IsEnabled = false;
             ChkRemoveXMLNS.IsEnabled = false;
             ChkJoinGradient.IsEnabled = false;
+            ChkPreferViewBox.IsEnabled = false;
             SliderPrecision.IsEnabled = false;
+            RealtimeExec.IsChecked = true;
         }
 
         /// <summary>
@@ -67,10 +68,11 @@ namespace SvgoAutoExe
             ButtonSrcDialogOpen.IsEnabled = true;
             ButtonDstDialogOpen.IsEnabled = true;
             TextBoxDstFile.IsEnabled = true;
-            RealtimeExec.IsEnabled = true;
             ChkRemoveXMLNS.IsEnabled = true;
             ChkJoinGradient.IsEnabled = true;
+            ChkPreferViewBox.IsEnabled = true;
             SliderPrecision.IsEnabled = true;
+            RealtimeExec.IsChecked = false;
         }
 
         /// <summary>
@@ -174,6 +176,7 @@ namespace SvgoAutoExe
             StopWatching();
 
             UiEnabled();
+            RealtimeExec.IsChecked = false;
             DoEvents();
         }
 
