@@ -41,6 +41,39 @@ namespace SvgoAutoExe
             previewWindow = new PreviewWindow(this);
             svgo = new Svgo(sizeWindow, previewWindow);
             TextSplitSize.Text = String.Format("{0:#,0}", Svgo.SVG_MAX_BYTE);
+            TextBoxSrcFile.AddHandler(TextBox.DragOverEvent, new DragEventHandler(TextBoxSrcFile_DragOver), true);
+            TextBoxSrcFile.AddHandler(TextBox.DropEvent, new DragEventHandler(TextBoxSrcFile_Drop), true);
+        }
+
+        /// <summary>
+        /// テキストボックスドラッグオーバー
+        /// </summary>
+        private void TextBoxSrcFile_DragOver(object sender, DragEventArgs e)
+        {
+            // マウスポインタを変更する。
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects = DragDropEffects.All;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = false;
+        }
+
+        /// <summary>
+        /// テキストボックスドロップ
+        /// </summary>
+        private void TextBoxSrcFile_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                TextBoxSrcFile.Text = string.Empty;
+                string[] filenames = (string[])e.Data.GetData(DataFormats.FileDrop);
+                TextBoxSrcFile.Text = filenames[0];
+                TextBoxDstFile.Text = Path.GetDirectoryName(TextBoxSrcFile.Text) + "\\S_" + Path.GetFileName(TextBoxSrcFile.Text);
+            }
         }
 
         /// <summary>
