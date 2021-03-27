@@ -62,7 +62,7 @@
             </Grid.RowDefinitions>
             <CheckBox x:Name="ChkRemoveXMLNS" Content="Remove XMLNS" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60" Height="15" RenderTransformOrigin="3.229,5.633" Width="105" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
             <CheckBox x:Name="ChkJoinGradient" Content="グラデ要素を結合" ToolTip="グラデの要素がxlink:hrefで別れている場合に結合します。グラデが直る可能性があります。" TabIndex="65" Height="16" HorizontalAlignment="Left" Grid.Row="2" Width="104" Margin="10,0,0,0" VerticalAlignment="Center"/>
-            <CheckBox x:Name="ChkRemoveXMLNS_Copy" Content="Prefer viewBox to width/height" ToolTip="ONにするとブラウザでのプレビュー表示が出来ません。ゲーム内では表示されます。" TabIndex="60" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <CheckBox x:Name="ChkPreferViewBox" Content="Prefer viewBox to width/height" ToolTip="viewBoxの座標を削除します。" TabIndex="60" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" IsChecked="True"/>
         </Grid>
         <!-- サイズ表示/プレビュー-->
         <Grid Grid.Row="4" VerticalAlignment="Top">

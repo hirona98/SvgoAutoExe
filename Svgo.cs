@@ -20,6 +20,7 @@ namespace SvgoAutoExe
 
         public string ExePath { get; set; }
         public bool RemoveXmlns { get; set; }
+        public bool PreferViewBox { get; set; }
         public bool JoinGradient { get; set; }
 
         private readonly SizeWindow sizeWindow;
@@ -127,6 +128,15 @@ namespace SvgoAutoExe
                 else
                 {
                     RegexReplaceFile(cfgPath, "noSpaceAfterFlags: true", "noSpaceAfterFlags: false");
+                }
+
+                if (PreferViewBox == true)
+                {
+                    RegexReplaceFile(cfgPath, "removeDimensions: false", "removeDimensions: true");
+                }
+                else
+                {
+                    RegexReplaceFile(cfgPath, "removeDimensions: true", "removeDimensions: false");
                 }
 
                 RegexReplaceFile(cfgPath, "floatPrecision: .", "floatPrecision: " + Precision);

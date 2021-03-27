@@ -157,6 +157,7 @@ namespace SvgoAutoExe
             svgo.OutputFilePath = TextBoxDstFile.Text;
             svgo.JoinGradient = (bool)ChkJoinGradient.IsChecked;
             svgo.RemoveXmlns = (bool)ChkRemoveXMLNS.IsChecked;
+            svgo.PreferViewBox = (bool)ChkPreferViewBox.IsChecked;
 
             if (StartWatching() == false)
             {
