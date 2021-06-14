@@ -37,9 +37,9 @@ namespace SvgoAutoExe
         public string GetArgument(string workFilePath)
         {
             string exeDir = Directory.GetParent(Assembly.GetExecutingAssembly().Location).ToString();
-            string optConfig = " --config=" + exeDir + "\\SvgoConfig.yml";
-            string optOutput = " -o " + OutputFilePath;
-            return workFilePath + optOutput + optConfig;
+            string optConfig = " --config=" + @"""" + exeDir + "\\SvgoConfig.yml" + @"""";
+            string optOutput = " -o " + @"""" + OutputFilePath + @"""";
+            return @"""" + workFilePath + @"""" + optOutput + optConfig;
         }
 
         /// <summary>
@@ -61,7 +61,8 @@ namespace SvgoAutoExe
 
                 Arguments = GetArgument(workFilePath),
                 CreateNoWindow = true,
-                UseShellExecute = false
+                UseShellExecute = false,
+                RedirectStandardOutput = true
             };
             Process p = Process.Start(psInfo);
             p.WaitForExit();
