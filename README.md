@@ -4,7 +4,7 @@
 
 # 使い方
 ## ダウンロード
-https://github.com/hiro-98/SvgoAutoExe/releases/download/v2.2.1/SvgoAutoExe_2.2.1.zip
+https://github.com/hirona98/SvgoAutoExe/releases/download/v2.2.2/SvgoAutoExe_2.2.2.zip
 
 ## 起動方法
 解凍したフォルダで SvgoAutoExe.exe を実行してください。
